@@ -1,3 +1,6 @@
+libciyu
+=============================
+
 This is a C library provides "related vocab" feature to Chinese input methods 
 such as Cangjie.
 
@@ -9,7 +12,18 @@ Development happens [on github](https://github.com/Cangjians/libciyu), and
 stable release tarballs will be available when we reach that point.
 
 
-## Legalities
+Installation
+------------
+
+Execute the following commands:
+
+    $ ./configure
+    $ make
+    $ sudo make install
+
+
+Legalities
+----------
 
 libciyu is offered under the terms of the
 [GNU Lesser General Public License, either version 3 or any later version](http://www.gnu.org/licenses/lgpl.html).
