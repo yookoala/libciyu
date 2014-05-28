@@ -1,0 +1,4 @@
+*.log
+*.o
+*.trs
+test_ciyu_entry
