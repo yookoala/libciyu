@@ -16,5 +16,43 @@
  * along with libciyu.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef __CIYU_ENTRY_H__
+#define __CIYU_ENTRY_H__
+
+#include <glib.h>
+#include <glib-object.h>
+
+#define CIYU_ENTRY_TYPE \
+    (ciyu_entry_get_type())
+#define CIYU_ENTRY(o) \
+    (G_TYPE_CHECK_INSTANCE_CAST ((o), CIYU_ENTRY_TYPE, CiyuEntry))
+#define CIYU_ENTRY_CLASS(c) \
+    (G_TYPE_CHECK_CLASS_CAST ((c), CIYU_ENTRY_TYPE, CiyuEntryClass))
+#define CIYU_IS_ENTRY(o) \
+    (G_TYPE_CHECK_INSTANCE_TYPE ((o), CIYU_ENTRY_TYPE))
+#define CIYU_IS_ENTRY_CLASS(c) \
+    (G_TYPE_CHECK_CLASS_TYPE ((c), CIYU_ENTRY_TYPE))
+#define CIYU_ENTRY_GET_CLASS(o) \
+    (G_TYPE_INSTANCE_GET_CLASS ((o), CIYU_ENTRY_TYPE, CiyuEntryClass))
 
 
+typedef struct _CiyuEntry CiyuEntry;
+typedef struct _CiyuEntryPrivate CiyuEntryPrivate;
+typedef struct _CiyuEntryClass CiyuEntryClass;
+
+struct _CiyuEntry {
+    GObject parent;
+};
+
+struct _CiyuEntryClass {
+    GObjectClass parent;
+};
+
+GType ciyu_entry_get_type () G_GNUC_CONST;
+
+CiyuEntry* ciyu_entry_new (void);
+
+void ciyu_entry_print (CiyuEntry *entry);
+
+
+#endif /* __CIYU_ENTRY_H__ */

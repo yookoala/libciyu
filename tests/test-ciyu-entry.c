@@ -16,14 +16,20 @@
  * along with libciyu.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <assert.h>
-
+#include <ciyu-entry.h>
 
 #ifndef CIYU_H
 #define CIYU_H
 
-#endif /* CIYU_H */
+int main (int argc, char *argv[]) {
 
-int main() {
+    CiyuEntry *entry;
+
+    entry = g_object_new (CIYU_ENTRY_TYPE, NULL);
+    ciyu_entry_print (entry);
+    g_object_unref (entry);
+
     return 0;
 }
+
+#endif /* CIYU_H */

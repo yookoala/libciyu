@@ -9,6 +9,13 @@ AC_PROG_MKDIR_P
 
 m4_ifdef([AM_SILENT_RULES],[AM_SILENT_RULES([yes])])
 
+# Check library versions
+# then substitute the revelant cflag with actual library information
+PKG_CHECK_MODULES([GLIB],[glib-2.0 > 2.19.0])
+PKG_CHECK_MODULES([GOBJECT],[gobject-2.0])
+AC_SUBST(GLIB_CFLAGS)
+AC_SUBST(GOBJECT_CFLAGS)
+
 # Initialize libtool
 LT_INIT([disable-static])
 
