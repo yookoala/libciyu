@@ -22,7 +22,7 @@
 
 /**
  * SECTION: ciyu-entry
- * @short_description: A entry.
+ * @short_description: A Ci Yu entry.
  *
  * The #CiyuEntry is a class to represent a Chinese vocab (Ci Yu)
  */
@@ -31,12 +31,14 @@ G_DEFINE_TYPE (CiyuEntry, ciyu_entry, G_TYPE_OBJECT)
 #define CIYU_ENTRY_GET_PRIVATE(o) \
     (G_TYPE_INSTANCE_GET_PRIVATE ((o), CIYU_ENTRY_TYPE, CiyuEntryPrivate))
 
-struct _CiyuEntryPrivate {
+struct _CiyuEntryPrivate
+{
     gchar *ciyu;
     guint frequency;
 };
 
-enum {
+enum
+{
     PROP_0,
     PROP_CIYU_ENTRY_CIYU,
     PROP_CIYU_ENTRY_FREQUENCY,
@@ -45,22 +47,31 @@ enum {
 
 static GParamSpec *obj_properties[N_PROPERTIES] = { NULL, };
 
-static void ciyu_entry_init (CiyuEntry *object) {
+
+static void
+ciyu_entry_init (CiyuEntry *object)
+{
     CiyuEntryPrivate *priv = CIYU_ENTRY_GET_PRIVATE (object);
     priv->ciyu = NULL;
     priv->frequency = 0;
 }
 
-static void ciyu_entry_finalize (GObject *object) {
+
+static void
+ciyu_entry_finalize (GObject *object)
+{
     CiyuEntryPrivate *priv = CIYU_ENTRY_GET_PRIVATE (object);
     g_free (priv->ciyu);
     G_OBJECT_CLASS (ciyu_entry_parent_class)->finalize (object);
 }
 
-static void ciyu_entry_set_property (GObject *object,
-                                     guint property_id,
-                                     const GValue *value,
-                                     GParamSpec *pspec) {
+
+static void
+ciyu_entry_set_property (GObject *object,
+                         guint property_id,
+                         const GValue *value,
+                         GParamSpec *pspec)
+{
     CiyuEntryPrivate *priv = CIYU_ENTRY_GET_PRIVATE (object);
 
     switch (property_id) {
@@ -77,10 +88,13 @@ static void ciyu_entry_set_property (GObject *object,
     }
 }
 
-static void ciyu_entry_get_property (GObject *object,
-                                     guint property_id,
-                                     GValue *value,
-                                     GParamSpec *pspec) {
+
+static void
+ciyu_entry_get_property (GObject *object,
+                         guint property_id,
+                         GValue *value,
+                         GParamSpec *pspec)
+{
     CiyuEntryPrivate *priv = CIYU_ENTRY_GET_PRIVATE (object);
 
     switch (property_id) {
@@ -96,8 +110,10 @@ static void ciyu_entry_get_property (GObject *object,
     }
 }
 
-static void ciyu_entry_class_init (CiyuEntryClass *klass) {
 
+static void
+ciyu_entry_class_init (CiyuEntryClass *klass)
+{
     GObjectClass *object_class = G_OBJECT_CLASS (klass);
     object_class->set_property = ciyu_entry_set_property;
     object_class->get_property = ciyu_entry_get_property;
@@ -136,6 +152,7 @@ static void ciyu_entry_class_init (CiyuEntryClass *klass) {
     g_type_class_add_private (object_class, sizeof (CiyuEntryPrivate));
 }
 
+
 /**
  * ciyu_entry_new:
  *
@@ -143,11 +160,13 @@ static void ciyu_entry_class_init (CiyuEntryClass *klass) {
  *
  * Return value: a new #CiyuEntry.
  */
-CiyuEntry* ciyu_entry_new () {
+CiyuEntry* ciyu_entry_new ()
+{
     CiyuEntry *entry;
     entry = g_object_new (CIYU_ENTRY_TYPE, NULL);
     return entry;
 }
+
 
 /**
  * ciyu_entry_print:
@@ -157,7 +176,9 @@ CiyuEntry* ciyu_entry_new () {
  *
  * Return value: nothing.
  */
-void ciyu_entry_print (CiyuEntry *entry) {
+void
+ciyu_entry_print (CiyuEntry *entry)
+{
     CiyuEntryPrivate *priv;
     g_return_if_fail (entry != NULL);
     priv = CIYU_ENTRY_GET_PRIVATE (entry);

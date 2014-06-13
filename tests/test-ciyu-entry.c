@@ -21,8 +21,8 @@
 #ifndef CIYU_H
 #define CIYU_H
 
-int main (int argc, char *argv[]) {
-
+int main (int argc, char *argv[])
+{
     CiyuEntry *entry;
 
     gchar *ciyu;
