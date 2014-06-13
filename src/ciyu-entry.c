@@ -100,12 +100,13 @@ static void ciyu_entry_class_init (CiyuEntryClass *klass) {
      * The entity content.
      */
     obj_properties[PROP_CIYU_ENTRY_CIYU] =
-    g_param_spec_string ("ciyu",
-                         "Ciyu",
-                         "The Chinese vocab / Ci Yu",
-                         "",
-                         G_PARAM_READWRITE |
-                         G_PARAM_CONSTRUCT);
+        g_param_spec_string ("ciyu",
+                             "Ciyu",
+                             "The Chinese vocab / Ci Yu",
+                             "",
+                             G_PARAM_READWRITE |
+                             G_PARAM_CONSTRUCT);
+
     g_object_class_install_properties (object_class,
                                        N_PROPERTIES,
                                        obj_properties);

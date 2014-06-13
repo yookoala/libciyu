@@ -25,7 +25,16 @@ int main (int argc, char *argv[]) {
 
     CiyuEntry *entry;
 
-    entry = g_object_new (CIYU_ENTRY_TYPE, NULL);
+    gchar *ciyu;
+
+    entry = g_object_new (CIYU_ENTRY_TYPE,
+                          "ciyu", "\xe5\xbb\xba\xe8\xa8\xad\xe6\xb0\x91\xe4\xb8\xbb\xe4\xb8\xad\xe5\x9c\x8b",
+                          "frequency", 123,
+                          NULL);
+
+    g_object_get (G_OBJECT (entry), "ciyu", &ciyu, NULL);
+    g_assert_cmpstr (ciyu, ==, "\xe5\xbb\xba\xe8\xa8\xad\xe6\xb0\x91\xe4\xb8\xbb\xe4\xb8\xad\xe5\x9c\x8b");
+
     ciyu_entry_print (entry);
     g_object_unref (entry);
 
