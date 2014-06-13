@@ -33,11 +33,13 @@ G_DEFINE_TYPE (CiyuEntry, ciyu_entry, G_TYPE_OBJECT)
 
 struct _CiyuEntryPrivate {
     gchar *ciyu;
+    guint frequency;
 };
 
 enum {
     PROP_0,
     PROP_CIYU_ENTRY_CIYU,
+    PROP_CIYU_ENTRY_FREQUENCY,
     N_PROPERTIES
 };
 
@@ -46,6 +48,7 @@ static GParamSpec *obj_properties[N_PROPERTIES] = { NULL, };
 static void ciyu_entry_init (CiyuEntry *object) {
     CiyuEntryPrivate *priv = CIYU_ENTRY_GET_PRIVATE (object);
     priv->ciyu = NULL;
+    priv->frequency = 0;
 }
 
 static void ciyu_entry_finalize (GObject *object) {
@@ -65,6 +68,9 @@ static void ciyu_entry_set_property (GObject *object,
             g_free (priv->ciyu);
             priv->ciyu = g_value_dup_string (value);
             break;
+        case PROP_CIYU_ENTRY_FREQUENCY:
+            priv->frequency = g_value_get_uint (value);
+            break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
             break;
@@ -80,6 +86,9 @@ static void ciyu_entry_get_property (GObject *object,
     switch (property_id) {
         case PROP_CIYU_ENTRY_CIYU:
             g_value_set_string (value, priv->ciyu);
+            break;
+        case PROP_CIYU_ENTRY_FREQUENCY:
+            g_value_set_uint (value, priv->frequency);
             break;
         default:
             G_OBJECT_WARN_INVALID_PROPERTY_ID (object, property_id, pspec);
@@ -106,6 +115,20 @@ static void ciyu_entry_class_init (CiyuEntryClass *klass) {
                              "",
                              G_PARAM_READWRITE |
                              G_PARAM_CONSTRUCT);
+
+    /**
+     * CiyuEntry:frequency:
+     *
+     * The frequency of the ciyu.
+     */
+
+    obj_properties[PROP_CIYU_ENTRY_FREQUENCY] =
+        g_param_spec_uint ("frequency",
+                           "Frequency",
+                           "The frequency of the Chinese vocab / Ci Yu",
+                           0, 65535, 0,
+                           G_PARAM_CONSTRUCT_ONLY |
+                           G_PARAM_READWRITE);
 
     g_object_class_install_properties (object_class,
                                        N_PROPERTIES,

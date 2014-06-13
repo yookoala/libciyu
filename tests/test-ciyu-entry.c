@@ -26,6 +26,7 @@ int main (int argc, char *argv[]) {
     CiyuEntry *entry;
 
     gchar *ciyu;
+    guint frequency;
 
     entry = g_object_new (CIYU_ENTRY_TYPE,
                           "ciyu", "\xe5\xbb\xba\xe8\xa8\xad\xe6\xb0\x91\xe4\xb8\xbb\xe4\xb8\xad\xe5\x9c\x8b",
@@ -34,6 +35,9 @@ int main (int argc, char *argv[]) {
 
     g_object_get (G_OBJECT (entry), "ciyu", &ciyu, NULL);
     g_assert_cmpstr (ciyu, ==, "\xe5\xbb\xba\xe8\xa8\xad\xe6\xb0\x91\xe4\xb8\xbb\xe4\xb8\xad\xe5\x9c\x8b");
+
+    g_object_get (G_OBJECT (entry), "frequency", &frequency, NULL);
+    g_assert_cmpuint (frequency, ==, 123);
 
     ciyu_entry_print (entry);
     g_object_unref (entry);
