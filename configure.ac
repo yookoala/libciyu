@@ -33,6 +33,7 @@ LT_INIT([disable-static])
 # OUTPUT files
 AC_CONFIG_FILES([
   Makefile
+  data/ciyu.pc
 ])
 
 

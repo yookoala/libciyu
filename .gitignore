@@ -27,4 +27,5 @@ test-suite.log
 *.la
 *.lo
 *.o
+*.pc
 *.typelib
