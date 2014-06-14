@@ -6,7 +6,6 @@ compile
 config.guess
 config.h
 config.h.in
-config.log
 config.status
 config.sub
 configure
@@ -18,13 +17,14 @@ missing
 py-compile
 stamp-h1
 test-driver
-test-suite.log
 .deps
 .dirstamp
 .libs
 *.gir
 *.la
 *.lo
+*.log
 *.o
 *.pc
+*.trs
 *.typelib

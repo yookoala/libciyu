@@ -1,0 +1,44 @@
+#
+# The below content are basic of "introspection-test"
+# shell script. Edit "introspection-test.in" to edit.
+#
+
+# check if gobject introspection module
+# installed in python
+
+if [ $HAVE_PYTHON -eq 1 ]; then
+    $PYTHON -c "import gi.repository"
+    if [ $? -eq 0 ]; then
+        HAVE_PYTHON_GIR=1
+    else
+        HAVE_PYTHON_GIR=0
+    fi
+fi
+
+# Notify user if the environment is not suitable for test
+# Also provide hint on the situation
+if [ $HAVE_INTROSPECTION -eq 1 ]; then
+    if [ $HAVE_PYTHON -eq 1 ]; then
+        if [ $HAVE_PYTHON_GIR -eq 1 ]; then
+            $PYTHON $TEST_PY
+            exit $?
+        else
+	    echo "Module \"gi.repository\" is not detected in your Python"
+	    echo "If you want to do the introspection test,"
+	    echo "please install GObject introspection related"
+	    echo "packages in your distribution."
+	    echo "** Skip introspection test **"
+        fi
+    else #HAVE_PYTHON
+	echo "Python is not detected"
+	echo "** Skip introspection test **"
+    fi
+else #HAVE_INTROSPECTION
+    echo "Introspection is not detected"
+    echo "Related library header may not be installed"
+    echo "or version maybe too old"
+    echo "gir and typelib files are not generated"
+    echo "** Skip introspection test **"
+fi
+
+exit 0

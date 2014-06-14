@@ -2,3 +2,4 @@
 *.o
 *.trs
 ciyu_entry
+introspection-test

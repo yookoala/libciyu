@@ -16,7 +16,7 @@ PKG_CHECK_MODULES([GOBJECT],[gobject-2.0])
 AC_SUBST(GLIB_CFLAGS)
 AC_SUBST(GOBJECT_CFLAGS)
 
-GOBJECT_INTROSPECTION_CHECK(1.39.0)
+GOBJECT_INTROSPECTION_CHECK(1.30.0)
 
 # Search Python if introspection is enabled, to find the overrides install dir
 # No need to make Python mandatory otherwise
@@ -25,6 +25,10 @@ AS_IF([test "x$found_introspection" = "xyes"],
         AM_PATH_PYTHON(2.7)
       ]
 )
+
+# Check if python exists
+AM_PATH_PYTHON(,, [:])
+AM_CONDITIONAL([HAVE_PYTHON], [test "$PYTHON" != :])
 
 
 # Initialize libtool
