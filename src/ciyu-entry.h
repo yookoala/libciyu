@@ -52,7 +52,7 @@ GType ciyu_entry_get_type () G_GNUC_CONST;
 
 CiyuEntry* ciyu_entry_new (void);
 
-void ciyu_entry_print (CiyuEntry *entry);
+void ciyu_entry_hello (CiyuEntry *entry);
 
 
 #endif /* __CIYU_ENTRY_H__ */

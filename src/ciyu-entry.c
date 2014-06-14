@@ -169,7 +169,7 @@ CiyuEntry* ciyu_entry_new ()
 
 
 /**
- * ciyu_entry_print:
+ * ciyu_entry_hello:
  * @entry: a #CiyuEntry
  *
  * Prints the Ciyu out.
@@ -177,7 +177,7 @@ CiyuEntry* ciyu_entry_new ()
  * Return value: nothing.
  */
 void
-ciyu_entry_print (CiyuEntry *entry)
+ciyu_entry_hello (CiyuEntry *entry)
 {
     CiyuEntryPrivate *priv;
     g_return_if_fail (entry != NULL);

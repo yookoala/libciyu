@@ -39,7 +39,7 @@ int main (int argc, char *argv[])
     g_object_get (G_OBJECT (entry), "frequency", &frequency, NULL);
     g_assert_cmpuint (frequency, ==, 123);
 
-    ciyu_entry_print (entry);
+    ciyu_entry_hello (entry);
     g_object_unref (entry);
 
     return 0;
