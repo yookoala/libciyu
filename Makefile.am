@@ -60,11 +60,11 @@ endif
 
 # -- Tests ---------------------------
 check_PROGRAMS = \
-	tests/test_ciyu_entry \
+	tests/ciyu_entry \
 	$(NULL)
 
-tests_test_ciyu_entry_SOURCES = tests/test-ciyu-entry.c
-tests_test_ciyu_entry_LDADD = src/libciyu.la
+tests_ciyu_entry_SOURCES = tests/ciyu-entry.c
+tests_ciyu_entry_LDADD = src/libciyu.la
 
 TESTS = $(check_PROGRAMS)
 

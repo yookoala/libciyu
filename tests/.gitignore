@@ -1,4 +1,4 @@
 *.log
 *.o
 *.trs
-test_ciyu_entry
+ciyu_entry
